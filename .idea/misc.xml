@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/James Files/Work/School/Projects/RockerFockers/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.28888888888888886" />
+        <entry key="..\:/James Files/Work/School/Projects/RockerFockers/app/src/main/res/drawable/ic_launcher_background.xml" value="0.28888888888888886" />
+        <entry key="..\:/James Files/Work/School/Projects/RockerFockers/app/src/main/res/layout/activity_game.xml" value="0.18" />
         <entry key="..\:/James Files/Work/School/Projects/RockerFockers/app/src/main/res/layout/activity_main.xml" value="0.20555555555555555" />
+        <entry key="..\:/James Files/Work/School/Projects/RockerFockers/app/src/main/res/layout/game_list.xml" value="0.18" />
+        <entry key="..\:/James Files/Work/School/Projects/RockerFockers/app/src/main/res/layout/resource_list.xml" value="0.21" />
       </map>
     </option>
   </component>

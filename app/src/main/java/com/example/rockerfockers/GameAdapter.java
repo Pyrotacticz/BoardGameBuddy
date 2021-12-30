@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,15 +16,17 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tvName;
         public TextView tvCount;
-        public Button bAdd;
-        public Button bSubtract;
+        public ImageButton bAdd;
+        public ImageButton bSubtract;
+        public ImageButton bDelete;
 
         public ViewHolder(View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.resource_name);
             tvCount = itemView.findViewById(R.id.countId);
             bAdd = itemView.findViewById(R.id.addId);
-            bSubtract = itemView.findViewById((R.id.subtractId));
+            bSubtract = itemView.findViewById(R.id.subtractId);
+            bDelete = itemView.findViewById(R.id.deleteId);
         }
 
     }
@@ -53,12 +56,12 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         TextView count = holder.tvCount;
         count.setText(Integer.toString(resource.getCount()));
 
-        Button addButton = holder.bAdd;
-        addButton.setText("+");
+        ImageButton addButton = holder.bAdd;
 
-        Button subtractButton = holder.bSubtract;
-        subtractButton.setText("-");
+        ImageButton subtractButton = holder.bSubtract;
         subtractButton.setEnabled(resource.nonzero());
+
+        ImageButton deleteButton = holder.bDelete;
 
         holder.bSubtract.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +78,15 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
                 resource.add();
                 holder.tvCount.setText(Integer.toString(resource.getCount()));
                 holder.bSubtract.setEnabled(resource.nonzero());
+            }
+        });
+
+        holder.bDelete.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                resourceList.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
+                notifyItemRangeChanged(holder.getAdapterPosition(), resourceList.size());
             }
         });
     }

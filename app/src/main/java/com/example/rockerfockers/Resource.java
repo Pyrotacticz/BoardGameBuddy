@@ -10,7 +10,7 @@ public class Resource implements Serializable {
 
     public Resource() {
         id = instance++;
-        rName = "Resource " + id;
+        rName = "Resource ";
         count = 0;
     }
 

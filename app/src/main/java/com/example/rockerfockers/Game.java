@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Game implements Serializable {
-    private String name;
+    private final String name;
 
     public List<Resource> resources;
 

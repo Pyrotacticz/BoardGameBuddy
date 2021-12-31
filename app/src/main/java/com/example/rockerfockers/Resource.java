@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Resource implements Serializable {
     private static int instance = 0;
     private int id;
-    private final String rName;
+    private String rName;
     private int count;
 
     public Resource() {
@@ -28,8 +28,16 @@ public class Resource implements Serializable {
         return rName;
     }
 
+    public void setName(String name) {
+        rName = name;
+    }
+
     public int getCount() {
         return count;
+    }
+
+    public void setCount(int num) {
+        count = num;
     }
 
     public void add() {

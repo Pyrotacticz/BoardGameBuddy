@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 public class GameActivity extends AppCompatActivity {
     private Game game;
@@ -22,7 +21,7 @@ public class GameActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_game);
 
-        rvGame = (RecyclerView) findViewById(R.id.gameId);
+        rvGame = findViewById(R.id.gameId);
 
         game = new Game();
 
@@ -48,6 +47,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onEditAction(MenuItem mi) {
-        //TODO
+        adapter.updateEditable();
+        adapter.notifyDataSetChanged();
     }
 }

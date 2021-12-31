@@ -11,7 +11,9 @@
         android:id="@+id/resource_name"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:imeOptions="actionDone"
+        android:inputType="text"/>
 
     <ImageButton
         android:id="@+id/subtractId"
@@ -34,7 +36,8 @@
         android:maxLength="6"
         android:ems="6"
         android:inputType="number"
-        android:selectAllOnFocus="true" />
+        android:selectAllOnFocus="true"
+        android:imeOptions="actionDone" />
 
     <ImageButton
         android:id="@+id/addId"

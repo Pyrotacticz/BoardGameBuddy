@@ -1,6 +1,8 @@
 package com.example.rockerfockers;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,6 +30,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         public ImageButton bDelete;
         public EditTextWatcher nameWatcher;
         public EditTextWatcher countWatcher;
+        public ImageView icResource;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -41,6 +45,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
             countWatcher.updateType(1);
             tvName.addTextChangedListener(nameWatcher);
             tvCount.addTextChangedListener(countWatcher);
+            icResource = itemView.findViewById(R.id.ic_resId);
         }
 
     }
@@ -84,6 +89,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
                 resource.subtract();
                 holder.tvCount.setText(String.format(Locale.getDefault(), "%d",  resource.getCount()));
                 holder.bSubtract.setEnabled(resource.nonzero());
+                holder.bAdd.setEnabled(resource.getCount() < 999);
             }
         });
 
@@ -93,17 +99,23 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
                 resource.add();
                 holder.tvCount.setText(String.format(Locale.getDefault(), "%d",  resource.getCount()));
                 holder.bSubtract.setEnabled(resource.nonzero());
+                holder.bAdd.setEnabled(resource.getCount() < 999);
             }
         });
 
         holder.bDelete.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                resourceList.remove(holder.getAdapterPosition());
-                notifyItemRemoved(holder.getAdapterPosition());
-                notifyItemRangeChanged(holder.getAdapterPosition(), resourceList.size());
+                int pos = holder.getAdapterPosition();
+                if (pos != RecyclerView.NO_POSITION) {
+                    resourceList.remove(pos);
+                    notifyItemRemoved(pos);
+                    notifyItemRangeChanged(pos, resourceList.size());
+                }
             }
         });
+
+        holder.icResource.setImageResource(R.drawable.ic_genres);
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 public class GameActivity extends AppCompatActivity {
     private Game game;
@@ -46,8 +47,27 @@ public class GameActivity extends AppCompatActivity {
         adapter.notifyItemChanged(game.resources.size() - 1);
     }
 
-    public void onEditAction(MenuItem mi) {
+    public void onClickConfirm(View view) {
         adapter.updateEditable();
+        Button addButton = findViewById(R.id.addResId);
+        addButton.setVisibility(adapter.isEditable() ? View.VISIBLE : View.GONE);
+        Button confirmButton = findViewById(R.id.confirmId);
+        confirmButton.setVisibility(adapter.isEditable() ? View.VISIBLE : View.GONE);
+        Button cancelButton = findViewById(R.id.cancelId);
+        cancelButton.setVisibility(adapter.isEditable() ? View.VISIBLE : View.GONE);
         adapter.notifyDataSetChanged();
+    }
+
+    public void onEditAction(MenuItem mi) {
+        if (!adapter.isEditable()) {
+            adapter.updateEditable();
+            Button addButton = findViewById(R.id.addResId);
+            addButton.setVisibility(adapter.isEditable() ? View.VISIBLE : View.GONE);
+            Button confirmButton = findViewById(R.id.confirmId);
+            confirmButton.setVisibility(adapter.isEditable() ? View.VISIBLE : View.GONE);
+            Button cancelButton = findViewById(R.id.cancelId);
+            cancelButton.setVisibility(adapter.isEditable() ? View.VISIBLE : View.GONE);
+            adapter.notifyDataSetChanged();
+        }
     }
 }

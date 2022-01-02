@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
 
@@ -73,7 +76,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
 
         ImageButton deleteButton = holder.bDelete;
         deleteButton.setFocusable(isEditable);
-        deleteButton.setVisibility(isEditable ? View.VISIBLE : View.GONE);
+        deleteButton.setVisibility(isEditable ? View.VISIBLE : View.INVISIBLE);
 
         holder.bSubtract.setOnClickListener(new View.OnClickListener() {
             @Override

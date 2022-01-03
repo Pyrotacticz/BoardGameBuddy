@@ -3,82 +3,112 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#232323"
-    android:orientation="horizontal"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
-    android:layout_marginBottom="30dp"
-    app:layout_constraintHeight="70dp"
-    app:layout_constraintWidth="360dp">
+    android:layout_height="80dp"
+    android:background ="@drawable/padded_round_rect"
+    android:layout_marginBottom="30dp">
+    <!-- android:paddingBottom="30dp"-->
+
 
     <LinearLayout
         android:layout_width="80dp"
-        android:layout_height="100dp"
-        android:orientation="vertical">
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:background="@drawable/round_rect_shape"
+        android:backgroundTint="#383838"
+        android:layout_marginLeft="10dp">
+
         <ImageView
             android:id="@+id/ic_resId"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
             tools:srcCompat="@tools:sample/avatars" />
 
         <EditText
             android:id="@+id/resource_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_weight="0"
+            android:backgroundTint="@color/black_l4"
+            android:fontFamily="@font/open_sans"
             android:imeOptions="actionDone"
-            android:inputType="text" />
+            android:inputType="text"
+            android:maxLength="10"
+            android:paddingTop="5dp"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:translationZ="90dp" />
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/subtractId"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:backgroundTint="#232323"
-        android:paddingLeft="1dp"
-        android:paddingRight="1dp"
-        android:src="@drawable/ic_minus"
-        android:translationY="10dp"
-        app:tint="#AEADE1" />
+    <LinearLayout
+        android:layout_width="329dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
 
-    <EditText
-        android:id="@+id/countId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="5"
-        android:ems="6"
-        android:imeOptions="actionDone"
-        android:inputType="number"
-        android:maxLength="6"
-        android:selectAllOnFocus="true"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:textSize="40sp"/>
+        <ImageButton
+            android:id="@+id/subtractId"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#232323"
+            android:paddingLeft="1dp"
+            android:paddingRight="1dp"
+            android:src="@drawable/ic_minus"
+            android:translationY="13dp"
+            app:tint="#AEADE1" />
 
-    <ImageButton
-        android:id="@+id/addId"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:backgroundTint="#232323"
-        android:paddingLeft="1dp"
-        android:paddingRight="1dp"
-        android:src="@drawable/ic_plus"
-        android:translationY="10dp"
-        app:tint="#AEADE1" />
+        <EditText
+            android:id="@+id/countId"
+            android:layout_width="176dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:backgroundTint="@color/black_l3"
+            android:ems="6"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="6"
+            android:selectAllOnFocus="true"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:translationY="2dp"/>
 
-    <ImageButton
-        android:id="@+id/deleteId"
-        android:layout_width="30dp"
+        <ImageButton
+            android:id="@+id/addId"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="25dp"
+            android:backgroundTint="#232323"
+            android:paddingLeft="1dp"
+            android:paddingRight="1dp"
+            android:src="@drawable/ic_plus"
+            android:translationY="13dp"
+            app:tint="#AEADE1" />
+
+        <ImageButton
+            android:id="@+id/deleteId"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:backgroundTint="#00FFFFFF"
+            android:src="@drawable/ic_svg_x"
+            app:tint="@color/white"
+            android:translationX="-20dp"
+            android:translationY="-6dp" />
+    </LinearLayout>
+
+    <ImageView
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:paddingLeft="1dp"
-        android:paddingRight="1dp"
-        android:src="@drawable/ic_svg_x"
-        android:textSize="15sp" />
+        android:background="@drawable/rectangle"
+        android:paddingTop="10dp"
+        android:paddingBottom="4dp"
+        android:layout_width="fill_parent"/>
+
 
 </LinearLayout>

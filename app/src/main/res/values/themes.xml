@@ -14,6 +14,8 @@
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/black_l1</item>
         <item name="colorButtonNormal">@color/contrast</item>
+        <!--font-->
+        <item name="android:fontFamily">@font/open_sans</item>
     </style>
 
 </resources>

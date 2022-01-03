@@ -81,7 +81,8 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         configureEditText(holder.tvCount, String.format(Locale.getDefault(), "%d",  resource.getCount()));
 
         ImageButton subtractButton = holder.bSubtract;
-        subtractButton.setEnabled(resource.nonzero());
+        subtractButton.setEnabled(resource.nonzero() && !isEditable);
+        holder.bAdd.setEnabled(!isEditable && resource.getCount() < 999);
 
         ImageButton deleteButton = holder.bDelete;
         deleteButton.setFocusable(isEditable);

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.RockerFockers" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="Theme.boardgamebuddy" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/black_l0</item>
         <item name="colorPrimaryVariant">@color/black_l0</item>
@@ -14,6 +14,7 @@
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/black_l1</item>
         <item name="colorButtonNormal">@color/contrast</item>
+        <item name="actionBarSize">70dip</item>
     </style>
 
 </resources>

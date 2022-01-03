@@ -1,4 +1,4 @@
-package com.example.rockerfockers;
+package com.example.boardgamebuddy;
 
 import org.junit.Test;
 

@@ -1,21 +1,23 @@
-package com.example.rockerfockers;
+
+/*
+ * Created by BoardGameBuddies
+ * Copyright (c) 2022. All rights reserved.
+ * Last modified 1/2/22, 3:34 PM
+ */
+
+package com.example.boardgamebuddy;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
+// Handles the view of a single game
 public class GameActivity extends AppCompatActivity {
     private Game game;
     private RecyclerView rvGame;
@@ -31,9 +33,6 @@ public class GameActivity extends AppCompatActivity {
 
         game = new Game();
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Board Game Manager");
-
         adapter = new GameAdapter(game);
 
         rvGame.setAdapter(adapter);
@@ -45,14 +44,19 @@ public class GameActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.game_menu, menu);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setCustomView(R.layout.abar);
         return true;
     }
 
+    // Adds a new resource to the resources list.
     public void addResource(View view) {
         game.resources.add(new Resource());
         adapter.notifyItemChanged(game.resources.size() - 1);
     }
 
+    // Confirmation triggers saving all changes to the resources.
     public void onClickConfirm(View view) {
         adapter.updateEditable();
         findViewById(R.id.miCompose).setEnabled(true);
@@ -67,8 +71,10 @@ public class GameActivity extends AppCompatActivity {
 
     public void onClickCancel(View view) {
         // Future Implementation
+        // For undoing the resource list changes.
     }
 
+    // Edit view of the GameAdapter allowing changes made to the resources.
     public void onEditAction(MenuItem mi) {
         if (!adapter.isEditable()) {
             adapter.updateEditable();

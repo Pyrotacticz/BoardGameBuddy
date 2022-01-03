@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.RockerFockers" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.boardgamebuddy" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/contrast</item>
         <item name="colorPrimaryVariant">@color/black_l0</item>

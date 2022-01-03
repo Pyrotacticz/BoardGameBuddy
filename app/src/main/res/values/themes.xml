@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.boardgamebuddy" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/black_l0</item>
+        <item name="colorPrimary">@color/black_l1</item>
         <item name="colorPrimaryVariant">@color/black_l0</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -12,7 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="android:windowBackground">@color/black_l1</item>
+        <item name="android:windowBackground">@color/black_l0</item>
         <item name="colorButtonNormal">@color/contrast</item>
         <item name="actionBarSize">70dip</item>
         <!--font-->

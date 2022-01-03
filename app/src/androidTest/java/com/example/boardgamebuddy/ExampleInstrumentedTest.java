@@ -1,4 +1,10 @@
-package com.example.rockerfockers;
+/*
+ * Created by James
+ * Copyright (c) 2022. All rights reserved.
+ * Last modified 12/26/21, 4:25 PM
+ */
+
+package com.example.boardgamebuddy;
 
 import android.content.Context;
 

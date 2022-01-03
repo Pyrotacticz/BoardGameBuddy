@@ -1,27 +1,29 @@
-package com.example.rockerfockers;
+
+/*
+ * Created by BoardGameBuddies
+ * Copyright (c) 2022. All rights reserved.
+ * Last modified 1/2/22, 4:06 PM
+ */
+
+package com.example.boardgamebuddy;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
 
+// Handles the view of the resources.
 public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
 
+    // view class
     public class ViewHolder extends RecyclerView.ViewHolder {
         public EditText tvName;
         public EditText tvCount;
@@ -32,6 +34,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         public EditTextWatcher countWatcher;
         public ImageView icResource;
 
+        // view constructor
         public ViewHolder(View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.resource_name);
@@ -53,6 +56,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     private boolean isEditable = false;
     private List<Resource> resourceList;
 
+    // adapter constructor
     public GameAdapter(Game game) {
         this.resourceList = game.resources;
     }
@@ -131,12 +135,14 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         return isEditable;
     }
 
+    // updates the view with the changes to the resource name and counter.
     private void configureEditText(EditText et, String s) {
         et.setText(s);
         et.setFocusableInTouchMode(isEditable);
         et.setBackgroundResource(isEditable ? android.R.drawable.edit_text : android.R.color.transparent);
     }
 
+    // handles text changes on resource name and counter.
     private class EditTextWatcher implements TextWatcher {
         private int pos;
         private int type;

@@ -14,15 +14,19 @@
         android:layout_height="80dp"
         android:orientation="vertical"
         android:background="@drawable/round_rect_shape"
-        android:backgroundTint="#383838"
+        android:backgroundTint="@color/black_l2"
         android:layout_marginLeft="10dp">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/ic_resId"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:onClick="onClickIcon"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:background="@color/black_l2"
             tools:srcCompat="@tools:sample/avatars" />
 
         <EditText
@@ -37,7 +41,7 @@
             android:maxLength="10"
             android:paddingTop="5dp"
             android:textAlignment="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="12sp"
             android:translationZ="90dp" />
     </LinearLayout>
@@ -55,7 +59,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginRight="10dp"
-            android:backgroundTint="#232323"
+            android:backgroundTint="@color/black_l2"
             android:paddingLeft="1dp"
             android:paddingRight="1dp"
             android:src="@drawable/ic_minus"
@@ -74,7 +78,7 @@
             android:maxLength="3"
             android:selectAllOnFocus="true"
             android:gravity="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="35sp"
             android:textStyle="bold"
             android:translationY="2dp"/>
@@ -85,7 +89,7 @@
             android:layout_height="30dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="25dp"
-            android:backgroundTint="#232323"
+            android:backgroundTint="@color/black_l2"
             android:paddingLeft="1dp"
             android:paddingRight="1dp"
             android:src="@drawable/ic_plus"

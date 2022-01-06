@@ -8,14 +8,18 @@
 package com.example.boardgamebuddy;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
+
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import java.util.Locale;
@@ -32,7 +36,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         public ImageButton bDelete;
         public EditTextWatcher nameWatcher;
         public EditTextWatcher countWatcher;
-        public ImageView icResource;
+        public ImageButton icResource;
 
         // view constructor
         public ViewHolder(View itemView) {
@@ -49,15 +53,18 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
             tvName.addTextChangedListener(nameWatcher);
             tvCount.addTextChangedListener(countWatcher);
             icResource = itemView.findViewById(R.id.ic_resId);
+            icResource.setImageResource(R.drawable.ic_genres);
         }
 
     }
 
+    Context context;
     private boolean isEditable = false;
     private List<Resource> resourceList;
 
     // adapter constructor
-    public GameAdapter(Game game) {
+    public GameAdapter(Context context, Game game) {
+        this.context = context;
         this.resourceList = game.resources;
     }
 
@@ -81,14 +88,19 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         configureEditText(holder.tvCount, String.format(Locale.getDefault(), "%d",  resource.getCount()));
 
         ImageButton subtractButton = holder.bSubtract;
-        subtractButton.setEnabled(resource.nonzero() && !isEditable);
-        holder.bAdd.setEnabled(!isEditable && resource.getCount() < 999);
-
+        ImageButton addButton = holder.bAdd;
         ImageButton deleteButton = holder.bDelete;
+        ImageButton iconButton = holder.icResource;
+
+        subtractButton.setEnabled(resource.nonzero() && !isEditable);
+        addButton.setEnabled(!isEditable && resource.getCount() < 999);
         deleteButton.setFocusable(isEditable);
         deleteButton.setVisibility(isEditable ? View.VISIBLE : View.INVISIBLE);
+        iconButton.setEnabled(isEditable);
+        iconButton.setBackgroundColor(Color.parseColor(isEditable ? "#545454" : "#383838"));
 
-        holder.bSubtract.setOnClickListener(new View.OnClickListener() {
+
+        subtractButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 resource.subtract();
@@ -98,7 +110,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
             }
         });
 
-        holder.bAdd.setOnClickListener(new View.OnClickListener() {
+        addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 resource.add();
@@ -108,7 +120,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
             }
         });
 
-        holder.bDelete.setOnClickListener(new View.OnClickListener(){
+        deleteButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 int pos = holder.getAdapterPosition();
@@ -120,7 +132,21 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
             }
         });
 
-        holder.icResource.setImageResource(R.drawable.ic_genres);
+        iconButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(context, view);
+                popup.getMenuInflater().inflate(R.menu.icon_menu, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        iconButton.setImageDrawable(menuItem.getIcon());
+                        return true;
+                    }
+                });
+                popup.show();
+            }
+        });
     }
 
     @Override

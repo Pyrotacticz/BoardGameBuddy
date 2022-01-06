@@ -11,11 +11,17 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 
 // Handles the view of a single game
 public class GameActivity extends AppCompatActivity {
@@ -33,7 +39,7 @@ public class GameActivity extends AppCompatActivity {
 
         game = new Game();
 
-        adapter = new GameAdapter(game);
+        adapter = new GameAdapter(this, game);
 
         rvGame.setAdapter(adapter);
 
@@ -46,7 +52,7 @@ public class GameActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.game_menu, menu);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        actionBar.setCustomView(R.layout.abar);
+        actionBar.setCustomView(R.layout.actionbar);
         return true;
     }
 
@@ -66,6 +72,8 @@ public class GameActivity extends AppCompatActivity {
         confirmButton.setVisibility(adapter.isEditable() ? View.VISIBLE : View.GONE);
         Button cancelButton = findViewById(R.id.cancelId);
         cancelButton.setVisibility(adapter.isEditable() ? View.GONE : View.GONE);
+        ImageButton iconButton = findViewById(R.id.ic_resId);
+        iconButton.setEnabled(adapter.isEditable());
         adapter.notifyDataSetChanged();
     }
 
@@ -85,6 +93,9 @@ public class GameActivity extends AppCompatActivity {
             confirmButton.setVisibility(adapter.isEditable() ? View.VISIBLE : View.GONE);
             Button cancelButton = findViewById(R.id.cancelId);
             cancelButton.setVisibility(adapter.isEditable() ? View.GONE : View.GONE);
+            ImageButton iconButton = findViewById(R.id.ic_resId);
+            iconButton.setEnabled(adapter.isEditable());
+            iconButton.setBackgroundColor(Color.parseColor("#383838"));
             adapter.notifyDataSetChanged();
         }
     }

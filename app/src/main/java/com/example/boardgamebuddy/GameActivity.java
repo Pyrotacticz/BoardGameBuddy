@@ -44,6 +44,7 @@ public class GameActivity extends AppCompatActivity {
         game = new Game();
         for (int i = 0; i < game.resources.size(); i++) {
             game.resources.get(i).setIcon(this.getResources().getDrawable(R.drawable.ic_genres));
+            game.resources.get(i).setTag(2);
         }
 
         adapter = new GameAdapter(this, game);
@@ -64,7 +65,7 @@ public class GameActivity extends AppCompatActivity {
 
     // Adds a new resource to the resources list.
     public void addResource(View view) {
-        game.resources.add(new Resource(this.getResources().getDrawable(R.drawable.ic_genres)));
+        game.resources.add(new Resource(this.getResources().getDrawable(R.drawable.ic_genres), 2));
         adapter.notifyItemChanged(game.resources.size() - 1);
     }
 

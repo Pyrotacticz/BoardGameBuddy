@@ -186,7 +186,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
                 wm.updateViewLayout(container, p);
 
                 for (ImageButton icon : icons) {
-                    if (icon.getTag() == icButton.getTag()) {
+                    if ((int) icon.getTag() == resourceList.get(pos).getTag()) {
                         icon.setBackgroundColor(context.getColor(R.color.black_l2));
                     } else {
                         icon.setBackgroundColor(context.getColor(R.color.black_l3));
@@ -196,6 +196,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
                         @Override
                         public void onClick(View view) {
                             resourceList.get(pos).setIcon(icon.getDrawable());
+                            resourceList.get(pos).setTag((int) icon.getTag());
                             // necessary to set as icon lags behind the resource update
                             icButton.setImageDrawable(icon.getDrawable());
                             icButton.setTag(icon.getTag());
@@ -208,7 +209,6 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
                 popupView.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View view, MotionEvent event) {
-                        notifyItemChanged(pos);
                         popupWindow.dismiss();
                         return true;
                     }

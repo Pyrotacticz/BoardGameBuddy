@@ -8,19 +8,29 @@
 package com.example.boardgamebuddy;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.PopupWindow;
 
+import androidx.appcompat.view.menu.ActionMenuItemView;
+import androidx.core.app.RemoteInput;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -54,6 +64,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
             tvCount.addTextChangedListener(countWatcher);
             icResource = itemView.findViewById(R.id.ic_resId);
             icResource.setImageResource(R.drawable.ic_genres);
+            icResource.setTag(2);
         }
 
     }
@@ -61,11 +72,31 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     Context context;
     private boolean isEditable = false;
     private List<Resource> resourceList;
+    private List<ImageButton> icons;
+    private View popupView;
 
     // adapter constructor
     public GameAdapter(Context context, Game game) {
         this.context = context;
         this.resourceList = game.resources;
+
+        // inflate the layout of the popup window
+        LayoutInflater inflater = (LayoutInflater)
+                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        popupView = inflater.inflate(R.layout.icon_select, null);
+
+        icons = new ArrayList<>();
+        icons.add(popupView.findViewById(R.id.imageButton1));
+        icons.add(popupView.findViewById(R.id.imageButton2));
+        icons.add(popupView.findViewById(R.id.imageButton3));
+        icons.add(popupView.findViewById(R.id.imageButton4));
+        icons.add(popupView.findViewById(R.id.imageButton5));
+        icons.add(popupView.findViewById(R.id.imageButton6));
+        icons.add(popupView.findViewById(R.id.imageButton7));
+        icons.add(popupView.findViewById(R.id.imageButton8));
+        for (int i = 0; i < icons.size(); i++) {
+            icons.get(i).setTag(i);
+        }
     }
 
     @Override
@@ -90,14 +121,15 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         ImageButton subtractButton = holder.bSubtract;
         ImageButton addButton = holder.bAdd;
         ImageButton deleteButton = holder.bDelete;
-        ImageButton iconButton = holder.icResource;
+        ImageButton icButton = holder.icResource;
 
         subtractButton.setEnabled(resource.nonzero() && !isEditable);
         addButton.setEnabled(!isEditable && resource.getCount() < 999);
         deleteButton.setFocusable(isEditable);
         deleteButton.setVisibility(isEditable ? View.VISIBLE : View.INVISIBLE);
-        iconButton.setEnabled(isEditable);
-        iconButton.setBackgroundColor(Color.parseColor(isEditable ? "#545454" : "#383838"));
+        icButton.setEnabled(isEditable);
+        icButton.setBackgroundColor(Color.parseColor(isEditable ? "#545454" : "#383838"));
+        icButton.setImageDrawable(resource.getIcon());
 
 
         subtractButton.setOnClickListener(new View.OnClickListener() {
@@ -132,19 +164,56 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
             }
         });
 
-        iconButton.setOnClickListener(new View.OnClickListener() {
+        // handles the popup window for icon selection
+        icButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu popup = new PopupMenu(context, view);
-                popup.getMenuInflater().inflate(R.menu.icon_menu, popup.getMenu());
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                int pos = holder.getAdapterPosition();
+
+                // create the popup window
+                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
+                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+                // to dim background
+                View container = (View) popupWindow.getContentView().getParent();
+                WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+                WindowManager.LayoutParams p = (WindowManager.LayoutParams) container.getLayoutParams();
+                // add flag
+                p.flags |= WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+                p.dimAmount = 0.5f;
+                wm.updateViewLayout(container, p);
+
+                for (ImageButton icon : icons) {
+                    if (icon.getTag() == icButton.getTag()) {
+                        icon.setBackgroundColor(context.getColor(R.color.black_l2));
+                    } else {
+                        icon.setBackgroundColor(context.getColor(R.color.black_l3));
+                    }
+
+                    icon.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            resourceList.get(pos).setIcon(icon.getDrawable());
+                            // necessary to set as icon lags behind the resource update
+                            icButton.setImageDrawable(icon.getDrawable());
+                            icButton.setTag(icon.getTag());
+                            popupWindow.dismiss();
+                        }
+                    });
+                }
+
+                // dismiss the popup window when touched
+                popupView.setOnTouchListener(new View.OnTouchListener() {
                     @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-                        iconButton.setImageDrawable(menuItem.getIcon());
+                    public boolean onTouch(View view, MotionEvent event) {
+                        notifyItemChanged(pos);
+                        popupWindow.dismiss();
                         return true;
                     }
                 });
-                popup.show();
+
             }
         });
     }

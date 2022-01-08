@@ -9,6 +9,8 @@ package com.example.boardgamebuddy;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +30,8 @@ public class GameActivity extends AppCompatActivity {
     private Game game;
     private RecyclerView rvGame;
     private GameAdapter adapter;
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +42,15 @@ public class GameActivity extends AppCompatActivity {
         rvGame = findViewById(R.id.gameId);
 
         game = new Game();
+        for (int i = 0; i < game.resources.size(); i++) {
+            game.resources.get(i).setIcon(this.getResources().getDrawable(R.drawable.ic_genres));
+        }
 
         adapter = new GameAdapter(this, game);
 
         rvGame.setAdapter(adapter);
 
         rvGame.setLayoutManager(new LinearLayoutManager(this));
-
     }
 
     @Override
@@ -58,7 +64,7 @@ public class GameActivity extends AppCompatActivity {
 
     // Adds a new resource to the resources list.
     public void addResource(View view) {
-        game.resources.add(new Resource());
+        game.resources.add(new Resource(this.getResources().getDrawable(R.drawable.ic_genres)));
         adapter.notifyItemChanged(game.resources.size() - 1);
     }
 

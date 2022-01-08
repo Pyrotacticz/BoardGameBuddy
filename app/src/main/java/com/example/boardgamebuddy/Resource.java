@@ -7,6 +7,8 @@
 
 package com.example.boardgamebuddy;
 
+import android.graphics.drawable.Drawable;
+
 import java.io.Serializable;
 
 /* Resource is a class that handles a single resource of a board game.
@@ -18,6 +20,7 @@ public class Resource implements Serializable {
     private int id;
     private String rName;
     private int count;
+    private Drawable icon;
 
     // Default constructor
     public Resource() {
@@ -35,6 +38,16 @@ public class Resource implements Serializable {
         id = instance++;
         rName = name;
         this.count = count;
+        icon = null;
+    }
+
+    // Constructor
+    /* Params
+     * @icon: sets this resource with an icon.
+     */
+    public Resource(Drawable icon) {
+        this();
+        this.icon = icon;
     }
 
     // Returns the resource's instance number
@@ -66,6 +79,14 @@ public class Resource implements Serializable {
      */
     public void setCount(int num) {
         count = num;
+    }
+
+    public Drawable getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Drawable icon) {
+        this.icon = icon;
     }
 
     // Adds one of the resource.

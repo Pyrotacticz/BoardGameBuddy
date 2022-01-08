@@ -21,6 +21,7 @@ public class Resource implements Serializable {
     private String rName;
     private int count;
     private Drawable icon;
+    private int tag; // used for comparing icons
 
     // Default constructor
     public Resource() {
@@ -39,15 +40,17 @@ public class Resource implements Serializable {
         rName = name;
         this.count = count;
         icon = null;
+        tag = -1;
     }
 
     // Constructor
     /* Params
      * @icon: sets this resource with an icon.
      */
-    public Resource(Drawable icon) {
+    public Resource(Drawable icon, int tag) {
         this();
         this.icon = icon;
+        this.tag = tag;
     }
 
     // Returns the resource's instance number
@@ -81,12 +84,30 @@ public class Resource implements Serializable {
         count = num;
     }
 
+    // Returns the icon of the resource.
     public Drawable getIcon() {
         return icon;
     }
 
+    // Sets the icon of the resource.
+    /* Params
+     * @icon: sets this resource with an icon.
+     */
     public void setIcon(Drawable icon) {
         this.icon = icon;
+    }
+
+    // Gets the tag of the resource icon.
+    public int getTag() {
+        return tag;
+    }
+
+    // Sets the tag of the resource icon.
+    /* Params
+     * @icon: sets this resource with an icon tag.
+     */
+    public void setTag(int tag) {
+        this.tag = tag;
     }
 
     // Adds one of the resource.

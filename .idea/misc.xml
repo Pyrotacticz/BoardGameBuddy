@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProject/BoardGameBuddy/app/src/main/res/drawable/ic_brickres.xml" value="0.33958333333333335" />
+        <entry key="..\:/AndroidProject/BoardGameBuddy/app/src/main/res/drawable/padded_round_rect.xml" value="0.21447368421052632" />
+        <entry key="..\:/AndroidProject/BoardGameBuddy/app/src/main/res/layout/actionbar.xml" value="0.12259816207184628" />
+        <entry key="..\:/AndroidProject/BoardGameBuddy/app/src/main/res/layout/activity_game.xml" value="0.22" />
+        <entry key="..\:/AndroidProject/BoardGameBuddy/app/src/main/res/layout/icon_select.xml" value="0.12259816207184628" />
+        <entry key="..\:/AndroidProject/BoardGameBuddy/app/src/main/res/layout/resource_list.xml" value="0.5" />
         <entry key="..\:/James Files/Work/School/Projects/RockerFockers/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.28888888888888886" />
         <entry key="..\:/James Files/Work/School/Projects/RockerFockers/app/src/main/res/drawable/ic_genres.xml" value="0.2274914089347079" />
         <entry key="..\:/James Files/Work/School/Projects/RockerFockers/app/src/main/res/drawable/ic_launcher_background.xml" value="0.28888888888888886" />
@@ -21,5 +27,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.30885416666666665" />
+      </ProjectState>
+    </option>
   </component>
 </project>

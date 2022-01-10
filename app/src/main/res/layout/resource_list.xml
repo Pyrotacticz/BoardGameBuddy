@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:background ="@drawable/padded_round_rect"
-    android:layout_marginBottom="30dp">
+    android:layout_marginBottom="30dp"
+    android:orientation="horizontal">
     <!-- android:paddingBottom="30dp"-->
 
 
     <LinearLayout
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/round_rect_shape"
         android:backgroundTint="@color/black_l2"
@@ -22,97 +22,86 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:onClick="onClickIcon"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
+            android:backgroundTint="@color/black_l2"
             android:background="@color/black_l2"
             tools:srcCompat="@tools:sample/avatars" />
 
         <EditText
             android:id="@+id/resource_name"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="0"
             android:backgroundTint="@color/black_l4"
             android:fontFamily="@font/open_sans"
             android:imeOptions="actionDone"
             android:inputType="text"
             android:maxLength="10"
-            android:paddingTop="5dp"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="12sp"
-            android:translationZ="90dp" />
+            android:textSize="10sp"
+            />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="329dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="30dp"
-        android:orientation="horizontal"
-        android:paddingTop="10dp">
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background ="@drawable/padded_round_rect">
 
         <ImageButton
             android:id="@+id/subtractId"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="10dp"
-            android:backgroundTint="@color/black_l2"
-            android:paddingLeft="1dp"
-            android:paddingRight="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black_l1"
             android:src="@drawable/ic_minus"
-            android:translationY="13dp"
-            app:tint="#AEADE1" />
+            app:tint="#AEADE1"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            />
 
         <EditText
             android:id="@+id/countId"
-            android:layout_width="176dp"
+            android:layout_width="170dp"
             android:layout_height="match_parent"
-            android:layout_weight="0"
             android:backgroundTint="@color/black_l3"
             android:ems="6"
+            android:gravity="center"
             android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLength="3"
             android:selectAllOnFocus="true"
-            android:gravity="center"
             android:textColor="@color/white"
             android:textSize="35sp"
             android:textStyle="bold"
-            android:translationY="2dp"/>
+            android:background="@drawable/round_rect_shape"/>
 
         <ImageButton
             android:id="@+id/addId"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="25dp"
-            android:backgroundTint="@color/black_l2"
-            android:paddingLeft="1dp"
-            android:paddingRight="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black_l1"
             android:src="@drawable/ic_plus"
-            android:translationY="13dp"
-            app:tint="#AEADE1" />
+            app:tint="#AEADE1"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            />
+
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/deleteId"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:backgroundTint="#00FFFFFF"
             android:src="@drawable/ic_svg_x"
             app:tint="@color/white"
-            android:translationX="-20dp"
-            android:translationY="-6dp" />
+            android:layout_marginLeft="-25dp"/>
+
     </LinearLayout>
-
-    <ImageView
-        android:layout_height="wrap_content"
-        android:background="@drawable/rectangle"
-        android:paddingTop="10dp"
-        android:paddingBottom="4dp"
-        android:layout_width="fill_parent"/>
-
-
-</LinearLayout>

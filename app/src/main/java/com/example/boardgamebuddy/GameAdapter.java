@@ -263,7 +263,11 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
                     resourceList.get(pos).setName(c.toString().trim());
                     break;
                 case 1:
-                    resourceList.get(pos).setCount(Integer.parseInt(c.toString().trim()));
+                    int set = 0;
+                    if (c.length() != 0) {
+                        set = Integer.parseInt(c.toString().trim());
+                    }
+                    resourceList.get(pos).setCount(set);
                     break;
             }
         }

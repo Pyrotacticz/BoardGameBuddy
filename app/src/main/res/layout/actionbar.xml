@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/abarId"
-        android:text="@string/app_name"
+        android:text="Board Game Buddy"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:fontFamily="@font/open_sans"/>
 </LinearLayout>

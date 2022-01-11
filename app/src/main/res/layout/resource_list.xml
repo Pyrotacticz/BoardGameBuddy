@@ -3,27 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="90dp"
     android:layout_marginBottom="30dp"
-    android:orientation="horizontal">
-    <!-- android:paddingBottom="30dp"-->
+    android:orientation="horizontal"
+    android:background ="@drawable/resource_bar">
+
 
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/round_rect_shape"
+        android:background="@drawable/icon_square"
         android:backgroundTint="@color/black_l2"
         android:layout_marginLeft="10dp">
 
         <ImageButton
             android:id="@+id/ic_resId"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:layout_weight="1"
             android:onClick="onClickIcon"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
@@ -36,15 +37,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="0"
-            android:backgroundTint="@color/black_l4"
+            android:backgroundTint="@color/black_l3"
             android:fontFamily="@font/open_sans"
             android:imeOptions="actionDone"
-            android:inputType="text"
+            android:inputType="text|textNoSuggestions"
             android:maxLength="10"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="10sp"
+            android:textSize="10.5sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
+            android:paddingVertical="5dp"
+            android:selectAllOnFocus="true"
+            android:cursorVisible="false"
             />
     </LinearLayout>
 
@@ -53,7 +58,8 @@
         android:layout_height="70dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:background ="@drawable/padded_round_rect">
+        android:orientation="horizontal"
+        >
 
         <ImageButton
             android:id="@+id/subtractId"
@@ -63,14 +69,13 @@
             android:src="@drawable/ic_minus"
             app:tint="#AEADE1"
             android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
             />
 
         <EditText
             android:id="@+id/countId"
-            android:layout_width="170dp"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/black_l3"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black_l2"
             android:ems="6"
             android:gravity="center"
             android:imeOptions="actionDone"
@@ -80,7 +85,12 @@
             android:textColor="@color/white"
             android:textSize="35sp"
             android:textStyle="bold"
-            android:background="@drawable/round_rect_shape"/>
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:paddingVertical="2dp"
+            android:cursorVisible="false"
+            android:fontFamily="@font/open_sans"
+            />
 
         <ImageButton
             android:id="@+id/addId"
@@ -90,15 +100,14 @@
             android:src="@drawable/ic_plus"
             app:tint="#AEADE1"
             android:layout_gravity="center"
-            android:layout_marginRight="10dp"
             />
 
         </LinearLayout>
 
         <ImageButton
             android:id="@+id/deleteId"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:backgroundTint="#00FFFFFF"
             android:src="@drawable/ic_svg_x"
             app:tint="@color/white"

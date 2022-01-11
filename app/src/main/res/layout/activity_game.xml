@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,39 +8,52 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gameId"
-        android:layout_width="395dp"
-        android:layout_height="799dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="72dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginBottom="75dp" />
+
+    <!--Potential Nav Bar on bottom of screen
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/gameId"
+        android:background="@drawable/bottom_bar"
+        android:layout_alignParentBottom="true">
+    </RelativeLayout>-->
+
+
 
     <Button
         android:id="@+id/addResId"
         android:layout_width="wrap_content"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="136dp"
-        android:layout_marginBottom="88dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="16dp"
         android:onClick="addResource"
         android:text="Add Counter"
+        android:textColor="#FFFFFF"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        />
+
 
     <Button
         android:id="@+id/confirmId"
         android:layout_width="wrap_content"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="16dp"
         android:text="Confirm"
         android:visibility="gone"
         android:onClick="onClickConfirm"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="#FFFFFF"
+        />
 
     <Button
         android:id="@+id/cancelId"
@@ -56,4 +69,5 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

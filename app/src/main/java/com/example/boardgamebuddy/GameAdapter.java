@@ -235,7 +235,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     private void configureEditText(EditText et, String s) {
         et.setText(s);
         et.setFocusableInTouchMode(isEditable);
-        et.setBackgroundResource(isEditable ? android.R.drawable.edit_text : android.R.color.transparent);
+        et.setBackgroundResource(isEditable ? R.drawable.textbox : android.R.color.transparent);
     }
 
     // handles text changes on resource name and counter.

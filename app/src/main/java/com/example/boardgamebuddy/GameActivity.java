@@ -102,7 +102,6 @@ public class GameActivity extends AppCompatActivity {
             cancelButton.setVisibility(adapter.isEditable() ? View.GONE : View.GONE);
             ImageButton iconButton = findViewById(R.id.ic_resId);
             iconButton.setEnabled(adapter.isEditable());
-            iconButton.setBackgroundColor(Color.parseColor("#383838"));
             adapter.notifyDataSetChanged();
         }
     }

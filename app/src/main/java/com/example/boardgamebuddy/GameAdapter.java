@@ -28,6 +28,7 @@ import android.widget.PopupWindow;
 
 import androidx.appcompat.view.menu.ActionMenuItemView;
 import androidx.core.app.RemoteInput;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -128,7 +129,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         deleteButton.setFocusable(isEditable);
         deleteButton.setVisibility(isEditable ? View.VISIBLE : View.INVISIBLE);
         icButton.setEnabled(isEditable);
-        icButton.setBackgroundColor(Color.parseColor(isEditable ? "#545454" : "#383838"));
+        icButton.setBackgroundResource(isEditable ? R.drawable.icon_square_light : R.drawable.icon_square);
         icButton.setImageDrawable(resource.getIcon());
 
 

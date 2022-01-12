@@ -16,7 +16,7 @@
         android:orientation="vertical"
         android:background="@drawable/icon_square"
         android:backgroundTint="@color/black_l2"
-        android:layout_marginLeft="10dp">
+        android:layout_marginStart="10dp">
 
         <ImageButton
             android:id="@+id/ic_resId"
@@ -25,11 +25,9 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:onClick="onClickIcon"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
-            android:backgroundTint="@color/black_l2"
-            android:background="@color/black_l2"
+            android:background="@drawable/icon_square"
             tools:srcCompat="@tools:sample/avatars" />
 
         <EditText
@@ -111,6 +109,6 @@
             android:backgroundTint="#00FFFFFF"
             android:src="@drawable/ic_svg_x"
             app:tint="@color/white"
-            android:layout_marginLeft="-25dp"/>
+            android:layout_marginStart="-25dp"/>
 
     </LinearLayout>

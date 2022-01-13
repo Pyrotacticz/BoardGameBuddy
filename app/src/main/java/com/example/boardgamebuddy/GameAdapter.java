@@ -266,7 +266,9 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
                 case 1:
                     int set = 0;
                     if (c.length() != 0) {
-                        set = Integer.parseInt(c.toString().trim());
+                        try {
+                            set = Math.abs(Integer.parseInt(c.toString().trim()));
+                        } catch (NumberFormatException nfe) {}
                     }
                     resourceList.get(pos).setCount(set);
                     break;

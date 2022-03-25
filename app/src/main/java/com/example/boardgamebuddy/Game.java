@@ -40,6 +40,11 @@ public class Game implements Serializable {
         }
     }
 
+    public Game(List<Resource> list) {
+        name = "Game";
+        resources = list;
+    }
+
     // Returns the name of the game.
     public String getName() {
         return name;

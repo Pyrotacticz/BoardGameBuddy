@@ -20,7 +20,7 @@ public class Resource implements Serializable {
     private int id;
     private String rName;
     private int count;
-    private Drawable icon;
+    private int icon; // not able to use sharedpreference
     private int tag; // used for comparing icons
 
     // Default constructor
@@ -39,7 +39,7 @@ public class Resource implements Serializable {
         id = instance++;
         rName = name;
         this.count = count;
-        icon = null;
+        icon = -1;
         tag = -1;
     }
 
@@ -47,7 +47,7 @@ public class Resource implements Serializable {
     /* Params
      * @icon: sets this resource with an icon.
      */
-    public Resource(Drawable icon, int tag) {
+    public Resource(int icon, int tag) {
         this();
         this.icon = icon;
         this.tag = tag;
@@ -85,7 +85,7 @@ public class Resource implements Serializable {
     }
 
     // Returns the icon of the resource.
-    public Drawable getIcon() {
+    public int getIcon() {
         return icon;
     }
 
@@ -93,7 +93,7 @@ public class Resource implements Serializable {
     /* Params
      * @icon: sets this resource with an icon.
      */
-    public void setIcon(Drawable icon) {
+    public void setIcon(int icon) {
         this.icon = icon;
     }
 

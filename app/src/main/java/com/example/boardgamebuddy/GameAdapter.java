@@ -95,9 +95,14 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         icons.add(popupView.findViewById(R.id.imageButton6));
         icons.add(popupView.findViewById(R.id.imageButton7));
         icons.add(popupView.findViewById(R.id.imageButton8));
-        for (int i = 0; i < icons.size(); i++) {
-            icons.get(i).setTag(i);
-        }
+        icons.get(0).setTag(R.drawable.ic_brickres);
+        icons.get(1).setTag(R.drawable.ic_cashres);
+        icons.get(2).setTag(R.drawable.ic_genres);
+        icons.get(3).setTag(R.drawable.ic_sheepres);
+        icons.get(4).setTag(R.drawable.ic_wheatres);
+        icons.get(5).setTag(R.drawable.ic_woodres);
+        icons.get(6).setTag(R.drawable.ic_clothres);
+        icons.get(7).setTag(R.drawable.ic_stoneres);
     }
 
     @Override
@@ -130,7 +135,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         deleteButton.setVisibility(isEditable ? View.VISIBLE : View.INVISIBLE);
         icButton.setEnabled(isEditable);
         icButton.setBackgroundResource(isEditable ? R.drawable.icon_square_light : R.drawable.icon_square);
-        icButton.setImageDrawable(resource.getIcon());
+        icButton.setImageResource(resource.getIcon());
 
 
         subtractButton.setOnClickListener(new View.OnClickListener() {
@@ -196,7 +201,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
                     icon.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            resourceList.get(pos).setIcon(icon.getDrawable());
+                            resourceList.get(pos).setIcon((int) icon.getTag());
                             resourceList.get(pos).setTag((int) icon.getTag());
                             // necessary to set as icon lags behind the resource update
                             icButton.setImageDrawable(icon.getDrawable());

@@ -14,16 +14,24 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.content.SharedPreferences;
+
 import android.os.Bundle;
-import android.view.Gravity;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 // Handles the view of a single game
 public class GameActivity extends AppCompatActivity {
@@ -39,12 +47,19 @@ public class GameActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_game);
 
+        List<Resource> loadResources = toLoad();
+
         rvGame = findViewById(R.id.gameId);
 
-        game = new Game();
-        for (int i = 0; i < game.resources.size(); i++) {
-            game.resources.get(i).setIcon(this.getResources().getDrawable(R.drawable.ic_genres));
-            game.resources.get(i).setTag(2);
+        if (loadResources != null) {
+            Log.i("SAVE", "Game loaded");
+            game = new Game(loadResources);
+        } else {
+            game = new Game();
+            for (int i = 0; i < game.resources.size(); i++) {
+                game.resources.get(i).setIcon(R.drawable.ic_genres);
+                game.resources.get(i).setTag(R.drawable.ic_genres);
+            }
         }
 
         adapter = new GameAdapter(this, game);
@@ -65,7 +80,7 @@ public class GameActivity extends AppCompatActivity {
 
     // Adds a new resource to the resources list.
     public void addResource(View view) {
-        game.resources.add(new Resource(this.getResources().getDrawable(R.drawable.ic_genres), 2));
+        game.resources.add(new Resource(R.drawable.ic_genres, 2));
         adapter.notifyItemChanged(game.resources.size() - 1);
     }
 
@@ -104,5 +119,36 @@ public class GameActivity extends AppCompatActivity {
             iconButton.setEnabled(adapter.isEditable());
             adapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void onStop() {
+        toSave();
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        toSave();
+        super.onDestroy();
+    }
+
+    private void toSave() {
+        SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);;
+        SharedPreferences.Editor prefEditor = pref.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(game.resources);
+        prefEditor.putString("resources", json);
+        prefEditor.commit();
+        Log.i("Saved", json);
+    }
+
+    private List<Resource> toLoad() {
+        SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);;
+        Gson gson = new Gson();
+        String json = pref.getString("resources", "");
+        Type type = new TypeToken<List<Resource>>(){}.getType();
+        List<Resource> res = gson.fromJson(json, type);
+        return res;
     }
 }

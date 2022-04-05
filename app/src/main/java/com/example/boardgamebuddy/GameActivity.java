@@ -52,7 +52,7 @@ public class GameActivity extends AppCompatActivity {
         rvGame = findViewById(R.id.gameId);
 
         if (loadResources != null) {
-            Log.i("SAVE", "Game loaded");
+            //Log.i("SAVE", "Game loaded");
             game = new Game(loadResources);
         } else {
             game = new Game();
@@ -134,7 +134,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void toSave() {
-        SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);;
+        SharedPreferences pref = getSharedPreferences("preferences", MODE_PRIVATE);;
         SharedPreferences.Editor prefEditor = pref.edit();
         Gson gson = new Gson();
         String json = gson.toJson(game.resources);
@@ -144,7 +144,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private List<Resource> toLoad() {
-        SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);;
+        SharedPreferences pref = getSharedPreferences("preferences", MODE_PRIVATE);;
         Gson gson = new Gson();
         String json = pref.getString("resources", "");
         Type type = new TypeToken<List<Resource>>(){}.getType();
